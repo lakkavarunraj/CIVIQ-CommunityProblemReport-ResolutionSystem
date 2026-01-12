@@ -1,0 +1,293 @@
+:root {
+    --primary-color: #86B817; /* Primary green */
+    --secondary-color: #86B817; /* Accent green */
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #efefef;
+    --gray-2: #757575;
+
+    --facebook-color: #4267B2;
+    --google-color: #DB4437;
+    --twitter-color: #1DA1F2;
+    --insta-color: #E1306C;
+
+    /* extra states */
+    --primary-600: #6fa113;
+    --primary-700: #5e8a10;
+    --ring: rgba(134, 184, 23, 0.35);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow-y: auto;   /* allow scrolling */
+    overflow-x: hidden; /* prevent horizontal scroll */
+}
+
+/* ========== BACKGROUNDS ========== */
+body {
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    background-attachment: fixed;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+/* left form background with pattern */
+.form-section {
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 10;
+    background: linear-gradient(145deg, #ffffff 0%, #ffffff 100%);
+    position: relative;
+}
+
+.form-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(134, 184, 23, 0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+    border-radius: 1rem;
+}
+
+/* right curved gradient background */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    z-index: 0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 24px;
+    border-bottom-left-radius: max(50vw, 50vh);
+    border-top-left-radius: max(50vw, 50vh);
+}
+
+/* right image/content */
+.content-section {
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 1; /* above gradient */
+}
+
+/* ========== LAYOUT ELEMENTS ========== */
+.col {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-content, .sign-up-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.sign-up-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sign-in-content {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.container.sign-in .sign-in-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.container.sign-in .sign-up-content {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 28rem;
+}
+
+/* Logos */
+.logo-wrapper {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.logo-wrapper img {
+    max-width: 100px;
+    width: 100%;
+    height: auto;
+}
+
+.content-logo {
+    text-align: center;
+}
+
+.content-logo img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.content-logo img:hover {
+    transform: scale(1.05);
+}
+
+/* ========== FORM ========== */
+.form {
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 1.2rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 8px 24px;
+}
+
+.input-row {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--gray-2);
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 0.85rem 3rem;
+    font-size: 1rem;
+    background-color: var(--gray);
+    border-radius: .5rem;
+    border: 0.125rem solid var(--white);
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.input-group input:focus, .input-group select:focus {
+    border: 0.125rem solid var(--primary-color);
+    box-shadow: 0 0 0 3px var(--ring);
+    background-color: #fff;
+}
+
+/* BUTTONS */
+.form button {
+    cursor: pointer;
+    width: 100%;
+    padding: .7rem 0;
+    border-radius: .5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    outline: none;
+    transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    margin-top: 1rem;
+}
+
+.form button:hover {
+    background-color: var(--primary-600);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(134, 184, 23, 0.35);
+}
+
+.form button:active {
+    background-color: var(--primary-700);
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.form p {
+    margin: 1rem 0;
+    font-size: .8rem;
+    color: var(--gray-2);
+    text-align: center;
+}
+
+.pointer {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .form-section, .content-section {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .content-section {
+        order: -1; /* show image on top for mobile */
+        padding: 1rem;
+    }
+
+    .content-logo img {
+        max-width: 300px;
+    }
+
+    /* background curve adapts */
+    .container::before {
+        width: 100%;
+        height: 40%;
+        border-radius: 0 0 50% 50%;
+        background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    }
+
+    .form-section::before {
+        background-size: 15px 15px;
+        opacity: 0.5;
+    }
+}
